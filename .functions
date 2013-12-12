@@ -211,7 +211,7 @@ function note() {
 	fi
 	osascript >/dev/null <<EOF
 tell application "Notes"
-	tell account "iCloud"
+	tell account "Gmail"
 		tell folder "Notes"
 			make new note with properties {name:"$title", body:"$title" & "<br><br>" & "$body"}
 		end tell
