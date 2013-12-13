@@ -4,7 +4,7 @@ function gcpm() {
 }
 
 function gcp() {
-	echo -n "What is the Commit Message? "
+	echo -n "What is the Commit Message dawg? "
 	read -e MSG
 	git commit -m "$MSG" && git push origin master
 	echo Committed and Pushed - "$MSG"
