@@ -3,11 +3,11 @@ function gcpm() {
 	git commit -m "$1" && git push origin master
 }
 
-function testcolor() {
-    echo -n "Pick a screen color (blue, yellow, red ): "
-    read -e COLOR
-    setterm -background $COLOR
-    echo It is a $COLOR day
+function gcp() {
+	echo -n "What is the Commit Message? "
+	read -e MSG
+	git commit -m "$MSG" && git push origin master
+	echo Committed and Pushed - "$MSG"
 }
 
 
