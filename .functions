@@ -10,7 +10,6 @@ function gcp() {
 	echo Committed and Pushed - "$MSG"
 }
 
-
 # Simple calculator
 function calc() {
 	local result=""
