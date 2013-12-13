@@ -1,3 +1,16 @@
+# GIT functions
+function gcpm() {
+	git commit -m "$1" && git push origin master
+}
+
+function testcolor() {
+    echo -n "Pick a screen color (blue, yellow, red ): "
+    read -e COLOR
+    setterm -background $COLOR
+    echo It is a $COLOR day
+}
+
+
 # Simple calculator
 function calc() {
 	local result=""
