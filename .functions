@@ -1,3 +1,36 @@
+# Grunt Stuff
+function grr() {
+
+	#First check if Package.json and Gruntfile exists.  If so, then run grunt.  If not, create them.
+	if [ -e package.json ] && [ -e Gruntfile.js ];
+	then
+		echo 'grunting.  grrrr....'
+		grunt
+	else
+		if ! [ -f /package.json ]; 
+		then
+			# copy package.json file from ~/.default-package.json
+			echo 'create package.json from default'
+			cp ~/.default-package.json ./package.json
+		fi
+
+		if ! [ -f /Gruntfile.js ]; 
+		then
+			# copy gruntfile from ~/.default-Gruntfile.js
+			echo 'creating Gruntfile.js from default'
+			cp ~/.default-Gruntfile.js ./Gruntfile.js
+		fi
+
+		# install grunt plugins
+		# grunt
+		echo 'installing grunt plugins.'
+		npm install
+
+		echo 'now grunting.'
+		grunt
+	fi
+}
+
 # GIT functions
 function gcpm() {
 	git commit -m "$1" && git push origin master

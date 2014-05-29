@@ -1,0 +1,13 @@
+{
+  "name": "DefaultGrunting",
+  "version": "0.1.0",
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-autoprefixer": "^0.7.3",
+    "grunt-contrib-imagemin": "^0.7.0",
+    "grunt-contrib-less": "^0.11.1",
+    "grunt-contrib-sass": "^0.7.3",
+    "grunt-contrib-watch": "^0.6.1",
+    "load-grunt-tasks": "^0.4.0"
+  }
+}
