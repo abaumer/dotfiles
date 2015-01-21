@@ -1,3 +1,13 @@
+# symlink
+function sym() {
+	echo -n "Source: "
+	read -e MSG
+	echo -n "Target Name: "
+	read -e TARGET
+	ln -s $MSG $TARGET
+	echo Symlink created from "$MSG" as "$TARGET"
+}
+
 # Grunt Stuff
 function grr() {
 
@@ -19,6 +29,13 @@ function grr() {
 			# copy gruntfile from ~/.default-Gruntfile.js
 			echo 'creating Gruntfile.js from default'
 			cp ~/.default-Gruntfile.js ./Gruntfile.js
+		fi
+
+		if ! [ -f /.gitignore ]; 
+		then
+			# copy .gitignore from ~/.default-gitignore.js
+			echo 'creating .gitignore from default'
+			cp ~/.default-gitignore ./.gitignore
 		fi
 
 		# install grunt plugins
