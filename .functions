@@ -14,24 +14,26 @@ function grr() {
 	#First check if Package.json and Gruntfile exists.  If so, then run grunt.  If not, create them.
 	if [ -e package.json ] && [ -e Gruntfile.js ];
 	then
+		echo 'installing grunt plugins.'
+		npm update
 		echo 'grunting.  grrrr....'
 		grunt
 	else
-		if ! [ -f /package.json ]; 
+		if ! [ -f /package.json ];
 		then
 			# copy package.json file from ~/.default-package.json
 			echo 'create package.json from default'
 			cp ~/.default-package.json ./package.json
 		fi
 
-		if ! [ -f /Gruntfile.js ]; 
+		if ! [ -f /Gruntfile.js ];
 		then
 			# copy gruntfile from ~/.default-Gruntfile.js
 			echo 'creating Gruntfile.js from default'
 			cp ~/.default-Gruntfile.js ./Gruntfile.js
 		fi
 
-		if ! [ -f /.gitignore ]; 
+		if ! [ -f /.gitignore ];
 		then
 			# copy .gitignore from ~/.default-gitignore.js
 			echo 'creating .gitignore from default'
@@ -49,8 +51,22 @@ function grr() {
 }
 
 # GIT functions
-function gcpm() {
-	git commit -m "$1" && git push origin master
+function ga() {
+	echo -n "Adding everything to the current commit."
+	git add --all
+	echo Committed. Done.
+}
+
+function gs() {
+	echo -n "Check that nasty status."
+	git status
+}
+
+function gc() {
+	echo -n "What is the Commit Message dawg? "
+	read -e MSG
+	git commit -m "$MSG"
+	echo Committed. Done.
 }
 
 function gcp() {
@@ -168,10 +184,13 @@ function server() {
 # Start a PHP server from a directory, optionally specifying the port
 # (Requires PHP 5.4.0+.)
 function phpserver() {
-	local port="${1:-4000}"
-	local ip=$(ipconfig getifaddr en1)
+	local port="$1";
+	if [ "$port" = "" ]; then
+		port="4444"
+	fi;
+	local ip=$(ipconfig getifaddr en0);
 	sleep 1 && open "http://${ip}:${port}/" &
-	php -S "${ip}:${port}"
+	php -S "${ip}:${port}";
 }
 
 # Compare original and gzipped file size
